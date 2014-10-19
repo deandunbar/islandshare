@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Partz</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery.fileupload.css">
+	<link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+	<!-- CSS adjustments for browsers with JavaScript disabled -->
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-noscript.css"></noscript>
+	<noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 51px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    
+    .navbar-colorful {
+		background-color: #1E90FF;
+		border-color: #080808;
+	}
+
+	.navbar-brand {
+		float: left;
+		height: 50px;
+		padding: 15px 15px;
+		font-size: 18px;
+		line-height: 20px;
+		color:white;
+	}
+	
+	
+	
+	.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+
+
+.make_tall_as_screen{
+
+height:89vh;
+margin:0px; 
+
+}
+
+.divider_color{
+	background-color:#DCD9D7;
+}
+
+#toolbar{
+	background-color:#BFBFBF;
+	height:5%;
+	height: 30px;
+	margin:0px;
+	padding:0px;
+}
+
+no_minimum{
+	min-height: 0px;
+	margin:0px;
+	
+}
+
+.water_background{
+	background: ##00aa77;
+background-image: url("img/zenbg-1.png"), url("img/zenbg-2.png");
+background-repeat: repeat-x, repeat;
+	
+}
+
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-colorful navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Island Share</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <input type="hidden" id="name">
+
+    <!-- Page Content -->
+
+		<div class="row col-lg-12 " id="toolbar">
+		
+		</div>
+        <div class=" no_minimum ">
+            <div class="col-lg-12 text-center">
+				<div class="row col-lg-5 make_tall_as_screen">
+				Sec 1
+					<input type="file" id="siofu_input" />
+					<div id="file_drop">Drop Files Here</div>
+
+
+				</div>
+				<div class="row col-lg-2  divider_color make_tall_as_screen">
+				Middle
+				</div>
+				<div class="row col-lg-5 pull-right make_tall_as_screen">
+				Sec 2
+				</div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/soiofu/client.min.js"></script>
+    <script src="js/dropzone.js"></script>
+<!--
+    <script src="js/chat.js"></script>
+-->
+    <script src="/socket.io/socket.io.js"></script>
+
+    
+    
+    <script>
+    $(function() {
+   
+var socket = io.connect();
+var uploader = new SocketIOFileUpload(socket);
+uploader.listenOnInput(document.getElementById("siofu_input"));
+//~ uploader.listenOnDrop(document.getElementById("file_drop"));
+
+
+
+
+    
+	});
+    
+    </script>
+
+</body>
+
+</html>
